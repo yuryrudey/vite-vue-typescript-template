@@ -1,0 +1,17 @@
+name: Lint
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  linting:
+    name: Linting
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: yarn --frozen-lockfile --ignore-scripts
+      - run: yarn lint:script
+      - run: yarn lint:style

@@ -1,0 +1,5 @@
+{
+  "files.eol": "\n",
+  "scss.validate": false,
+  "stylelint.validate": ["scss", "vue"]
+}
