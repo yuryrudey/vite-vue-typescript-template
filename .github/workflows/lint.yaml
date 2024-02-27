@@ -1,0 +1,20 @@
+name: Lint
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  linting:
+    name: Linting
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8.6.0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20.9.0
+          cache: pnpm
+      - run: pnpm i --frozen-lockfile --ignore-scripts
+      - run: pnpm lint
