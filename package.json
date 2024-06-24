@@ -1,0 +1,59 @@
+{
+  "name": "vite-vue-typescript-template",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "postinstall": "simple-git-hooks",
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview",
+    "lint:script": "eslint \"**/*.{ts,vue}\" --cache",
+    "lintfix:script": "pnpm lint:script --fix",
+    "lint:style": "stylelint \"**/*.{scss,vue}\" --cache",
+    "lintfix:style": "pnpm lint:style --fix",
+    "lint": "pnpm lint:script && pnpm lint:style",
+    "lintfix": "pnpm lintfix:script && pnpm lintfix:style",
+    "format": "prettier . --list-different --cache --write",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "pinia": "^2.1.7",
+    "vue": "^3.4.29",
+    "vue-router": "^4.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.7",
+    "@typescript-eslint/eslint-plugin": "^7.13.1",
+    "@typescript-eslint/parser": "^7.13.1",
+    "@vitejs/plugin-vue": "^5.0.5",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-vue": "^9.26.0",
+    "lint-staged": "^15.2.7",
+    "postcss": "^8.4.38",
+    "postcss-html": "^1.7.0",
+    "prettier": "^3.3.2",
+    "sass": "^1.77.6",
+    "simple-git-hooks": "^2.11.1",
+    "stylelint": "^16.6.1",
+    "stylelint-config-prettier-scss": "^1.0.0",
+    "stylelint-config-recommended-scss": "^14.0.0",
+    "stylelint-config-recommended-vue": "^1.5.0",
+    "stylelint-scss": "^6.3.2",
+    "typescript": "^5.4.5",
+    "vite": "^5.3.1",
+    "vitest": "^1.6.0",
+    "vue-eslint-parser": "^9.4.3",
+    "vue-tsc": "^2.0.21"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm exec lint-staged --quiet --concurrent false"
+  },
+  "lint-staged": {
+    "*.{ts,vue}": "eslint --cache --fix",
+    "*.{scss,vue}": "stylelint --cache --fix",
+    "*": "prettier --list-different --cache --write"
+  }
+}
