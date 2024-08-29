@@ -1,0 +1,47 @@
+{
+  "name": "vite-vue-typescript-template",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "postinstall": "simple-git-hooks",
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint \"**/*.{ts,vue}\" --cache",
+    "lintfix": "npm run lint --fix",
+    "format": "prettier . --list-different --cache --write",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "pinia": "^2.2.2",
+    "vue": "^3.4.38",
+    "vue-router": "^4.4.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.9.1",
+    "@types/node": "^22.5.1",
+    "@vitejs/plugin-vue": "^5.1.2",
+    "eslint": "^9.9.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-vue": "^9.27.0",
+    "globals": "^15.9.0",
+    "lint-staged": "^15.2.9",
+    "prettier": "^3.3.3",
+    "sass": "^1.77.8",
+    "simple-git-hooks": "^2.11.1",
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.3.0",
+    "vite": "^5.4.2",
+    "vitest": "^2.0.5",
+    "vue-tsc": "^2.1.2"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged --quiet --concurrent false"
+  },
+  "lint-staged": {
+    "*.{ts,vue}": "eslint --cache --fix",
+    "*": "prettier --list-different --cache --write"
+  }
+}

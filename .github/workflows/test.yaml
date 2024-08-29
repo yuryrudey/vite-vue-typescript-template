@@ -1,0 +1,17 @@
+name: Test
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  testing:
+    name: Testing
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20.9.0
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm run test
